@@ -148,14 +148,27 @@ export default class ReactForm extends Component {
 
   }
   timStudentTheoMaSV = (e) => {
-    let maSVcanTim = e.target.value;
-    console.log("ma sv can tim: " + maSVcanTim)
-    let { arrStudent, formValue } = this.state;
-    let studentTimDuoc = arrStudent.find(student => student.maSV == maSVcanTim);
-    //Cập nhật lại state sau khi chỉnh sửa
-    this.setState({
-        studentCanTim: studentTimDuoc
-    })
+    let timer;
+    clearTimeout(timer);
+    // Sets new timer that may or may not get cleared
+    timer = setTimeout(() => {
+        let maSVcanTim = e.target.value;
+        console.log("ma sv can tim: " + maSVcanTim)
+        let { arrStudent, formValue } = this.state;
+        let studentTimDuoc = arrStudent.find(student => student.maSV == maSVcanTim);
+        //Cập nhật lại state sau khi chỉnh sửa
+        this.setState({
+            studentCanTim: studentTimDuoc
+        })
+    }, 1000);
+    // let maSVcanTim = e.target.value;
+    // console.log("ma sv can tim: " + maSVcanTim)
+    // let { arrStudent, formValue } = this.state;
+    // let studentTimDuoc = arrStudent.find(student => student.maSV == maSVcanTim);
+    // //Cập nhật lại state sau khi chỉnh sửa
+    // this.setState({
+    //     studentCanTim: studentTimDuoc
+    // })
   }
   render() {
     let {formValue} = this.state;
