@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import TableStudent from './TableStudent';
 import StudentCanTim from './StudentCanTim';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 export default class ReactForm extends Component {
   state = {
     formValue: {
-        maSV: '1',
-        soDienThoai: '0938223456',
-        hoTen: 'Nguyen Van B',
-        email: 'nguyenvanb@gmail.com'
+        maSV: '',
+        soDienThoai: '',
+        hoTen: '',
+        email: ''
     },
     formError: {
         maSV: '',
@@ -18,7 +19,7 @@ export default class ReactForm extends Component {
     },
     valid: false,
     arrStudent: [
-        { maSV: '1', soDienThoai: '0938223456', hoTen: 'Nguyen Van B', email: 'nguyenvanb@gmail.com'}
+        // { maSV: '1', soDienThoai: '0938223456', hoTen: 'Nguyen Van B', email: 'nguyenvanb@gmail.com'}
     ],
     studentCanTim: {
         maSV: '',
@@ -163,13 +164,20 @@ export default class ReactForm extends Component {
     // }, 1000);
     let maSVcanTim = e.target.value;
     console.log("ma sv can tim: " + maSVcanTim)
+    console.log("arr sv: " + this.state.arrStudent)
     let { arrStudent, formValue } = this.state;
-    let studentTimDuoc = arrStudent.filter(student => student.maSV == maSVcanTim);
+    let studentTimDuoc = arrStudent.find(student => student.maSV == maSVcanTim);
     console.log(studentTimDuoc)
-    //Cập nhật lại state sau khi chỉnh sửa
-    this.setState({
-        studentCanTim: studentTimDuoc[0]
-    })
+    if (studentTimDuoc){
+        //Cập nhật lại state sau khi chỉnh sửa
+        this.setState({
+            studentCanTim: studentTimDuoc
+        })
+    } else {
+        console.log("ma sv ko ton tai");
+        return false;
+    }
+    
   }
   render() {
     let {formValue} = this.state;
