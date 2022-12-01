@@ -5,10 +5,10 @@ import StudentCanTim from './StudentCanTim';
 export default class ReactForm extends Component {
   state = {
     formValue: {
-        maSV: '1',
-        soDienThoai: '0938223456',
-        hoTen: 'Nguyen Van B',
-        email: 'nguyenvanb@gmail.com'
+        maSV: '',
+        soDienThoai: '',
+        hoTen: '',
+        email: ''
     },
     formError: {
         maSV: '',
@@ -18,7 +18,6 @@ export default class ReactForm extends Component {
     },
     valid: false,
     arrStudent: [
-        { maSV: '1', soDienThoai: '0938223456', hoTen: 'Nguyen Van B', email: 'nguyenvanb@gmail.com'}
     ],
     studentCanTim: {
         maSV: '',
